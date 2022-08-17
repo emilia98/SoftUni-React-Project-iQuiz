@@ -1,0 +1,29 @@
+div.text-field {
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+div.text-field input {
+    display: inline-block;
+    outline: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 5px 10px;
+    height: 30px;
+    font-size: 1.075em;
+    width: calc(100% - 24px);
+}
+
+div.text-field input:focus {
+    border: 2px solid rgb(99, 102, 241);
+}
+
+div.text-field label {
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 0.925em;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 5px;
+}
