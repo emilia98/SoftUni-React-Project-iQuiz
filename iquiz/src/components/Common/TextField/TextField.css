@@ -1,5 +1,4 @@
 div.text-field {
-    display: inline-block;
     box-sizing: border-box;
     width: 100%;
 }
@@ -27,4 +26,13 @@ div.text-field label {
     box-sizing: border-box;
     width: 100%;
     padding: 0 5px;
+}
+
+div.text-field span.error {
+    font-size: 0.825em;
+    color: indianred;
+    font-weight: 700;
+    margin: 10px 5px;
+    display: inline-block;
+    line-height: 0.825em;
 }
