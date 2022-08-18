@@ -1,6 +1,7 @@
 div.text-field {
     display: inline-block;
     box-sizing: border-box;
+    width: 100%;
 }
 
 div.text-field input {
