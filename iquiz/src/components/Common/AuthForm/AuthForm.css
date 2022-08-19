@@ -47,6 +47,14 @@ h2.auth-form-subtitle {
     margin: 7px;
 }
 
+.login .field-type {
+    width: calc(100% - 20px);
+}
+
+.auth-form-container.login {
+    width: 50%;
+}
+
 .auth-form-container form {
     margin-top: 30px;
     display: flex;
@@ -56,6 +64,7 @@ h2.auth-form-subtitle {
     flex-wrap: wrap;
     flex-direction: row;
 }
+
 
 .auth-form-container div.submit-btn {
     text-align: center;

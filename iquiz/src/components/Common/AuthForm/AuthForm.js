@@ -1,10 +1,10 @@
 import TextField from '../TextField';
 import './AuthForm.css';
 
-const AuthForm = ({ mainTitle, title, subtitle, fields, onSubmitParentHandler, submitButtonText }) => {
+const AuthForm = ({ mainTitle, title, subtitle, fields, onSubmitParentHandler, submitButtonText, customClass }) => {
     return (
         <div className="auth-form-full-container">
-            <div className="auth-form-container">
+            <div className={ `auth-form-container ${customClass}` }>
                 <p className="auth-form-main-title">{ mainTitle }</p>
             <h1 className="auth-form-title">
                 { title }
