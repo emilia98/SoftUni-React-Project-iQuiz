@@ -1,0 +1,46 @@
+.home-feature-card {
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.home-feature-card .feature-card-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--main-color);
+    margin: 0 20px;
+}
+
+.home-feature-card .feature-card-icon span {
+    display: flex;
+    width: 100%;
+    color: white;
+    height: 100%;
+    font-size: 22px;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-feature-card .feature-card-text {
+    width: calc(100% - 90px);
+}
+
+.feature-card-text h3 {
+    font-size: 1.125em;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.feature-card-text p {
+    font-size: 0.925em;
+    color: rgb(107, 114, 128);
+    line-height: 1.250em;
+}
+
+/*
+
+
+*/
