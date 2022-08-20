@@ -1,9 +1,10 @@
 import { AuthValidator } from "../../../helpers/validators";
 import AuthForm from "../../Common/AuthForm";
+import * as authService from '../../../services/authService';
 
 const Register = () => {
     let fields = [
-        { type: "text",  name: "fullName", placeholder: "Full Name", labelText: "Full Name", hasPreview: false, validator: AuthValidator.fullName },
+        { type: "text",  name: "username", placeholder: "Username", labelText: "Username", hasPreview: false, validator: AuthValidator.username },
         { type: "email",  name: "email", placeholder: "Email", labelText: "Email", hasPreview: false,},
         { type: "password",  name: "password", placeholder: "Password", labelText: "Password", hasPreview: false, validator: AuthValidator.password }, 
         { type: "password",  name: "confirmPassword", placeholder: "Confirm Password", labelText: "Confirm Password", hasPreview: false, validator: AuthValidator.confirmPassword }, 
@@ -14,12 +15,20 @@ const Register = () => {
 
         let formData = new FormData(e.target);
 
-        let fullName = formData.get('fullName');
+        let username = formData.get('username');
         let email = formData.get('email');
         let password = formData.get('password');
         let confirmPassword = formData.get('confirmPassword');
-        
-        console.log(fullName, email, password, confirmPassword);
+
+        authService.register(username, email, password)
+        .then(authData => {
+            console.log(authData);
+        })
+        .catch(errors => {
+            console.log(Object.keys(errors));
+            console.log(errors);
+            console.log(errors["Email"]);
+        });
     }
 
     return (

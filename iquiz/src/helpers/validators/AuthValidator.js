@@ -1,12 +1,25 @@
 class AuthValidator {
     static fullName(value) {
-        console.log("value", value);
         if (!value || value.length === 0) {
             return { valid: false, message: "Full Name is required!" }
         }
 
         if (value.length < 3 || value.length > 25) {
             return { valid: false, message: "Full Name should be between 3 and 25 characters long!" }
+        }
+
+        return { valid: true, message: "" }
+    }
+
+    static username(value) {
+        let valueLength = value.length;
+
+        if (!value || valueLength === 0) {
+            return { valid: false, message: "Username is required!" }
+        }
+
+        if (valueLength < 3 || valueLength > 22) {
+            return { valid: false, message: "Username should be between 3 and 22 characters long!" }
         }
 
         return { valid: true, message: "" }

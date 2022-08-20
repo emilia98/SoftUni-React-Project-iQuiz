@@ -1,5 +1,6 @@
 import { AuthValidator } from "../../../helpers/validators";
 import AuthForm from "../../Common/AuthForm";
+import * as authService from '../../../services/authService';
 
 const Login = () => {
     let fields = [
@@ -14,7 +15,13 @@ const Login = () => {
         let email = formData.get("email");
         let password = formData.get("password");
 
-        console.log(email, password);
+        authService.login(email, password)
+        .then(authData => {
+            console.log(authData);
+        })
+        .catch(error => {
+            console.log(error);
+        });
     }
     return (
         <AuthForm mainTitle="Continue Learning" title="Login" subtitle="We are happy that you are back in the game!" 
@@ -23,3 +30,14 @@ const Login = () => {
 }
 
 export default Login;
+
+/*
+ authService.login(email, password)
+            .then(authData => {
+                userLogin(authData);
+                navigate('/');
+            })
+            .catch(() => {
+                navigate('/404');
+            });
+            */
