@@ -24,7 +24,7 @@ const CreateQuestion = () => {
             placeholder: "Answer",
             labelText: "Answer",
             hasPreview: true,
-            validator: null
+            validator: QuestionValidator.answerContent
             // isCorrect: false
         }
 
@@ -69,7 +69,6 @@ const CreateQuestion = () => {
                         <p className="section-title">Answers Details</p>
                         {
                             values.answers.map((answer, index) => {
-                                console.log(index, answer)
                                 let answerLabel = `${answer.labelText} #${index + 1}`;
                                 let answerName = `answer-${index}`;
                                 return (

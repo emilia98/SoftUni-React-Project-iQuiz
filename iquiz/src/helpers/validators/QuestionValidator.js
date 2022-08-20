@@ -12,6 +12,20 @@ class QuestionValidator {
 
         return { valid: true, message: "" };
     }
+
+    static answerContent(value) {
+        let valueLength = value.length;
+
+        if (!value || valueLength === 0) {
+            return { valid: false, message: "Answer Content is required!" };
+        }
+
+        if (valueLength > 100) {
+            return { valid: false, message: "Answer Content should be at most 100 characters long!" };
+        }
+
+        return { valid: true, message: "" };
+    }
 }
 
 export default QuestionValidator;
