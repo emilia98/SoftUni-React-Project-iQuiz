@@ -1,0 +1,122 @@
+.question-list-container {
+    width: 90%;
+    margin: 30px auto;
+    display: flow-root;
+}
+
+.question-list-container h1 {
+    font-size: 2.5em;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* QUESTION LIST ITEM */
+.question-list-item {
+    display: flow-root;
+    width: 90%;
+    margin: 30px auto;
+    padding: 30px;
+    border: 2px solid #f1f1f1;
+    border-radius: 12px;
+    box-shadow: #f1f1f1 0px 3px 3px;
+}
+
+.question-list-item .info {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.question-title {
+    font-size: 1.25em;
+    font-weight: 600;
+    line-height: 1.25em;
+}
+
+.question-props {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.question-props .level {
+    font-size: 0.925em;
+    display: flex;
+    align-items: center;
+}
+
+.question-props .level .level-label {
+    margin-right: 5px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.question-props .level .level-diff {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    border-radius: 15px;
+    margin-right: 5px;
+}
+
+.question-props .level .level-diff.easy {
+    background: palegreen;
+}
+
+.question-props .date-added, .question-props .answered-times, .question-props .success-rate  {
+    display: flex;
+    margin-left: 45px;
+    align-items: center;
+}
+
+.question-props .date-added .icon, .question-props .answered-times .icon, .question-props .success-rate .icon {
+    color: var(--main-color);
+    font-size: 1.25em;
+    margin-right: 10px;
+    font-weight: 700;
+}
+
+.question-props .date-added .date, .question-props .answered-times .answered, .question-props .success-rate .rate {
+    font-size: 0.925em;
+}
+
+.question-list-item .question-info {
+    width: 80%;
+    display: inline-block;
+}
+
+.question-list-item .actions {
+    width: calc(20% - 20px);
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.question-list-item .actions .button {
+    border: none;
+    padding: 10px 5px;
+    width: 120px;
+    border-radius: 26px;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: 600;
+    font-size: 0.925em;
+}
+
+.question-list-item .actions .button-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    text-align: center;
+    height: 39px;
+    width: 39px;
+    color: var(--main-color);
+    border-radius: 100%;
+    border: 2px solid var(--main-color);
+    box-shadow: #f1f1f1 2px 1px 1px;
+    margin: 5px;
+}

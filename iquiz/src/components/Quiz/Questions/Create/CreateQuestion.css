@@ -54,6 +54,10 @@
     display: inline-block;
 }
 
+.create-question-answer-view {
+    width:75%;
+}
+
 .question-content {
     display: flex;
 }
