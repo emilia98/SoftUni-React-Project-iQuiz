@@ -30,7 +30,7 @@ const TextField = ({ type, name, labelText, placeholder, value, hasPreview, vali
             <input type={type} id={name} name={name} 
                 placeholder={ placeholder } value={ values.finalValue } 
                 onChange={handleOnChange}/>
-            { hasPreview && (values.finalValue) ? <Preview value={values.finalValue} /> : null }
+            { hasPreview && (values.finalValue) && !values.error ? <Preview value={values.finalValue} /> : null }
             { (values.error ? <span className="error">{ values.error }</span> : null)}
         </div>
     )

@@ -1,6 +1,7 @@
 import './CreateQuestion.css';
 import { useState } from 'react';
 import TextField from '../../../Common/TextField';
+import { QuestionValidator } from '../../../../helpers/validators';
 
 const CreateQuestion = () => {
     const [values, setValues] = useState({
@@ -8,7 +9,7 @@ const CreateQuestion = () => {
     });
 
     let questionField = {
-        type: "text", name: "questionTitle", placeholder: "Question Content", labelText: "Question Content", hasPreview: true, validator: null
+        type: "text", name: "questionTitle", placeholder: "Question Content", labelText: "Question Content", hasPreview: true, validator: QuestionValidator.questionContent
     }
 
     const onAddAnswerClick = (e) => {
