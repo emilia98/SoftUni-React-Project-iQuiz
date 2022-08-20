@@ -9,7 +9,7 @@ div.text-field input {
     border: 2px solid rgba(0, 0, 0, 0.1);
     border-radius: 6px;
     padding: 5px 10px;
-    height: 30px;
+    height: 39px;
     font-size: 1.075em;
     width: calc(100% - 24px);
 }

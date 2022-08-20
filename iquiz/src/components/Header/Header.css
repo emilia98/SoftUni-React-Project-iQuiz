@@ -1,0 +1,22 @@
+nav {
+    background-color: var(--main-color);
+}
+
+nav .main-nav-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+    color: white;
+}
+
+nav .main-nav-menu .menu-item {
+    padding: 15px 20px;
+}
+
+nav .menu-nav-item ul li {
+    background-color: red;
+}

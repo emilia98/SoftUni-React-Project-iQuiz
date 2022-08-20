@@ -33,7 +33,3 @@ const AuthForm = ({ mainTitle, title, subtitle, fields, onSubmitParentHandler, s
 }
 
 export default AuthForm;
-
-/*
-<TextField type={"text"} name={"firstName"} placeholder={"First Name"} labelText={"First Name"} hasPreview={true}/>
-*/

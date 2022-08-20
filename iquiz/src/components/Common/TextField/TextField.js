@@ -12,20 +12,16 @@ const TextField = ({ type, name, labelText, placeholder, value, hasPreview, vali
         let value = event.target.value;
         let error = undefined;
 
-
         if (validator) {
             let validationResult = validator(value);
             if (!validationResult.valid) {
                 error = validationResult.message;
-                console.log(error)
             }
         }
 
         setValues(prevValues => {
             return { ...prevValues, finalValue: value, error: error}
          });
-
-    
     }
 
     return (

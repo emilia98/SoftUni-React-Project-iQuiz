@@ -1,11 +1,11 @@
 class AuthValidator {
     static fullName(value) {
         console.log("value", value);
-        if (!value || value.count === 0) {
+        if (!value || value.length === 0) {
             return { valid: false, message: "Full Name is required!" }
         }
 
-        if (value.count < 3 || value.count > 25) {
+        if (value.length < 3 || value.length > 25) {
             return { valid: false, message: "Full Name should be between 3 and 25 characters long!" }
         }
 
@@ -13,11 +13,11 @@ class AuthValidator {
     }
 
     static password(value) {
-        if (!value || value.count === 0) {
+        if (!value || value.length === 0) {
             return { valid: false, message: "Password is required!" }
         }
 
-        if (value.count < 8 || value.count > 20) {
+        if (value.length < 8 || value.length > 20) {
             return { valid: false, message: "Password should be between 8 and 20 characters long!"}
         }
 
@@ -25,7 +25,7 @@ class AuthValidator {
     }
 
     static confirmPassword(value, comparableValue) {
-        if (!value || value.count === 0) {
+        if (!value || value.length === 0) {
             return { valid: false, message: "Confirm Password is required!" }
         }
 
