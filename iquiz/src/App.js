@@ -12,6 +12,7 @@ import CreateQuestion from "./components/Quiz/Questions/Create";
 import { QuestionList } from "./components/Quiz/Questions/QuestionList";
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from "./components/Common/PrivateRoute";
+import Logout from './components/Authentication/Logout/Logout';
 
 function App() {
  
@@ -30,6 +31,11 @@ function App() {
           </PrivateRoute>
         )} />
         <Route path="/questionlist" element = {< QuestionList /> } />
+        <Route path="/logout" element={(
+          <PrivateRoute>
+            <Logout />
+          </PrivateRoute>
+        )} />
       </Routes>
     </div>
     </AuthProvider>
