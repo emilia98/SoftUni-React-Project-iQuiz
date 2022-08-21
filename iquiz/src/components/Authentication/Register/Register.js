@@ -1,8 +1,17 @@
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 import { AuthValidator } from "../../../helpers/validators";
 import AuthForm from "../../Common/AuthForm";
 import * as authService from '../../../services/authService';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 const Register = () => {
+    const { userLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+    
+
     let fields = [
         { type: "text",  name: "username", placeholder: "Username", labelText: "Username", hasPreview: false, validator: AuthValidator.username },
         { type: "email",  name: "email", placeholder: "Email", labelText: "Email", hasPreview: false,},
@@ -22,9 +31,15 @@ const Register = () => {
 
         authService.register(username, email, password)
         .then(authData => {
-            console.log(authData);
+            toast.success("Registration completed successfully!");
+            userLogin(authData);
+            navigate('/');
         })
         .catch(errors => {
+            if (errors.errorMsg) {
+                toast.error(errors.errorMsg);
+                return;
+            }
             console.log(Object.keys(errors));
             console.log(errors);
             console.log(errors["Email"]);
