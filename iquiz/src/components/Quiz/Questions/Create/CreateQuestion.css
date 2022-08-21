@@ -55,9 +55,35 @@
 }
 
 .create-question-answer-view {
-    width:75%;
+    width:100%;
+    display: flex;
+    align-items: center;
 }
 
 .question-content {
     display: flex;
+}
+
+.create-question-answer-view .text-field {
+    width: 75%;
+    display: inline-block;
+}
+
+.create-question-answer-view .checkbox-container {
+    width: 25%;
+    display: inline-block;
+}
+
+.create-question-answer-view .delete-answer {
+    width: 30px;
+    height: 30px;
+    background: var(--main-color);
+    margin-left: 20px;
+    color: white;
+    font-size: 24px;
+    display: inline-flex;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
 }

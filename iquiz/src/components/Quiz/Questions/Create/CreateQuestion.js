@@ -1,11 +1,14 @@
 import './CreateQuestion.css';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import TextField from '../../../Common/TextField';
 import { QuestionValidator } from '../../../../helpers/validators';
+import Checkbox from '../../../Common/Checkbox';
 
 const CreateQuestion = () => {
     const [values, setValues] = useState({
-        answers: []
+        answers: [],
+        rowIndex: 0
     });
 
     let questionField = {
@@ -24,13 +27,24 @@ const CreateQuestion = () => {
             placeholder: "Answer",
             labelText: "Answer",
             hasPreview: true,
-            validator: QuestionValidator.answerContent
-            // isCorrect: false
+            id: values.rowIndex,
+            validator: QuestionValidator.answerContent,
+            isCorrect: false
         }
 
         allAnswers.push(answer);
         setValues(prevValues => {
-            return { ...prevValues, answers: allAnswers }
+            return { ...prevValues, answers: allAnswers, rowIndex: values.rowIndex + 1 }
+        })
+    }
+
+    const onDeleteAnswerClicked = (e) => {
+        let rowIndex = parseInt(e.target.getAttribute("data-id"));
+        let answers = values.answers.filter(a => {
+            return a.id !== rowIndex;
+        });
+        setValues(prevValues => {
+            return { ...prevValues, answers: answers }
         })
     }
 
@@ -40,13 +54,41 @@ const CreateQuestion = () => {
         let formData = new FormData(e.target);
 
         let question = formData.get('questionTitle');
-        let answer1 = formData.get("answer-1");
-        let answer2 = formData.get("answer-2");
-        let answer3 = formData.get("answer-3");
-        let answer4 = formData.get("answer-4");
+        let answer1 = { text: formData.get('answer-1'), isCorrect: formData.get("answer-1-checkbox") ? true : false }
+        let answer2 = { text: formData.get("answer-2"), isCorrect: formData.get("answer-2-checkbox") ? true : false }
+        let answer3 = { text: formData.get('answer-3'), isCorrect: formData.get("answer-3-checkbox") ? true : false }
+        let answer4 = { text: formData.get("answer-4"), isCorrect: formData.get("answer-4-checkbox") ? true : false }
 
-        console.log(question, answer1, answer2, answer3, answer4);
+        let allAnswersGenerated = [answer1, answer2, answer3, answer4];
+        if (allAnswersGenerated.every(x => !x || !x.text || x.text.length === 0)) {
+            toast.error("Please, provide at least one non-empty answer!");
+            return;
+        }
+
+        if (allAnswersGenerated.every(c => !c.isCorrect)) {
+            toast.error("Select at least one correct answer!");
+            return;
+        }
+
+        let data = {
+            title: question,
+            level: 0,
+            answers: extractAnswers(allAnswersGenerated)
+        };
+
+        let allEntries = Object.fromEntries(new FormData(e.target));
+        
     }
+
+    const extractAnswers = (allAnswers) => {
+        let answers = []
+        for (let answer of allAnswers) {
+            if (answer && answer.text && answer.text.length > 0) {
+                answers.push({ text: answer.text, isCorrect: answer.isCorrect });
+            }
+        }
+        return answers;
+    };
 
     return (
         <div className="create-question-container">
@@ -56,13 +98,13 @@ const CreateQuestion = () => {
                     <div className="question-details">
                         <p className="section-title">Question Details</p>
                         <div className='question-content'>
-                        <div className="question-content-field">
-                            <TextField type={questionField.type} name={questionField.name} placeholder={questionField.placeholder} labelText={questionField.labelText}
-                                hasPreview={questionField.hasPreview} validator={questionField.validator} />
-                        </div>
-                        <div className="add-new-btn">
-                            <button type="button" onClick={onAddAnswerClick}>Add Answer</button>
-                        </div>
+                            <div className="question-content-field">
+                                <TextField type={questionField.type} name={questionField.name} placeholder={questionField.placeholder} labelText={questionField.labelText}
+                                    hasPreview={questionField.hasPreview} validator={questionField.validator} />
+                            </div>
+                            <div className="add-new-btn">
+                                <button type="button" onClick={onAddAnswerClick}>Add Answer</button>
+                            </div>
                         </div>
                     </div>
                     <div className="answer-details">
@@ -70,11 +112,17 @@ const CreateQuestion = () => {
                         {
                             values.answers.map((answer, index) => {
                                 let answerLabel = `${answer.labelText} #${index + 1}`;
-                                let answerName = `answer-${index}`;
+                                let answerName = `answer-${index + 1}`;
                                 return (
                                     <div className="create-question-answer-view" key={index}>
-                                        <TextField type={answer.type} name={answerName} placeholder={`${answerLabel} Content`} labelText={answerLabel}
+                                        <TextField key={answer.id} type={answer.type} name={answerName} placeholder={`${answerLabel} Content`} labelText={answerLabel}
                                             hasPreview={answer.hasPreview} validator={answer.validator} />
+                                        <div className="checkbox-container">
+                                            <Checkbox name={`${answerName}-checkbox`} label={"Is Answer correct"} />
+                                        </div>
+                                        <button type="button" className="delete-answer" onClick={onDeleteAnswerClicked} data-id={ answer.id }>
+                                            <i className="fa-solid fa-minus" data-id={ answer.id }></i>
+                                        </button>
                                     </div>
                                 )
                             })
