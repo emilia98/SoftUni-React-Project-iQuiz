@@ -6,7 +6,7 @@ nav .main-nav-menu {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 80%;
     margin: 0 auto;
     height: 100%;
@@ -19,4 +19,13 @@ nav .main-nav-menu .menu-item {
 
 nav .menu-nav-item ul li {
     background-color: red;
+}
+
+nav .main-nav-menu .main-links {
+    height: 100%;
+    display: flex;
+}
+
+nav .main-nav-menu .auth-links {
+    height: 100%;
 }
