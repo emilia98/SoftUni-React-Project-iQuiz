@@ -1,8 +1,16 @@
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 import { AuthValidator } from "../../../helpers/validators";
 import AuthForm from "../../Common/AuthForm";
 import * as authService from '../../../services/authService';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 const Login = () => {
+    const { userLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     let fields = [
         { type: "text", name: "email", placeholder: "Email", labelText: "Email", validator: null },
         { type: "password", name: "password", placeholder: "Password", labelText: "Password", validator: AuthValidator.password }
@@ -18,8 +26,14 @@ const Login = () => {
         authService.login(email, password)
         .then(authData => {
             console.log(authData);
+            toast.success("Successfully logged in!");
+            userLogin(authData);
+            navigate('/');
         })
         .catch(error => {
+            if (error.errorMsg) {
+                toast.error(error.errorMsg);
+            }
             console.log(error);
         });
     }
@@ -30,14 +44,3 @@ const Login = () => {
 }
 
 export default Login;
-
-/*
- authService.login(email, password)
-            .then(authData => {
-                userLogin(authData);
-                navigate('/');
-            })
-            .catch(() => {
-                navigate('/404');
-            });
-            */
