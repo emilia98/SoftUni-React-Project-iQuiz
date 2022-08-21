@@ -25,7 +25,6 @@ const Login = () => {
 
         authService.login(email, password)
         .then(authData => {
-            console.log(authData);
             toast.success("Successfully logged in!");
             userLogin(authData);
             navigate('/');
@@ -34,7 +33,6 @@ const Login = () => {
             if (error.errorMsg) {
                 toast.error(error.errorMsg);
             }
-            console.log(error);
         });
     }
     return (

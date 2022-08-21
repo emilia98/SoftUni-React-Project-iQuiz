@@ -5,9 +5,9 @@ const request = async (method, url, data) => {
 
         let headers = {}
 
-        if (auth.accessToken) {
-            // headers['X-Authorization'] = auth.accessToken;
-            // headers['Authorization'] = `Bearer ${auth.accessToken}`;
+        if (auth.tken) {
+            // headers['X-Authorization'] = auth.token;
+            // headers['Authorization'] = `Bearer ${auth.token}`;
         }
 
         let buildRequest;
