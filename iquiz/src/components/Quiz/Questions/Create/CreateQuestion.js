@@ -97,11 +97,6 @@ const CreateQuestion = () => {
                 return
             }
         });
-
-        
-
-        //let allEntries = Object.fromEntries(new FormData(e.target));
-        
     }
 
     const extractAnswers = (allAnswers) => {

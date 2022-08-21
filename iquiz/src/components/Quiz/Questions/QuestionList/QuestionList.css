@@ -13,3 +13,10 @@
     text-align: center;
 }
 
+.question-list-content div.loading {
+    font-size: 2.5em;
+    letter-spacing: 10px;
+    text-align: center;
+    margin-top: 50px;
+    color: var(--main-color);
+}

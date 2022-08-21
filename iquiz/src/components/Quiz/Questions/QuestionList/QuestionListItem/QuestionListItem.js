@@ -2,10 +2,8 @@ import './QuestionListItem.css';
 import { Link } from 'react-router-dom';
 
 const QuestionListItem = ({ id, title, level, addedAt, answeredBy, successRate, createdBy, currentUser }) => {
-    let levelWord = level.charAt(0).toUpperCase() + level.slice(1);
+    let levelClass = level.charAt(0).toLowerCase() + level.slice(1);
 
-    console.log(createdBy, currentUser);
-    
     return (
         <div className="question-list-item">
             <div className="question-info">
@@ -13,8 +11,8 @@ const QuestionListItem = ({ id, title, level, addedAt, answeredBy, successRate, 
                 <div className="question-props">
                     <div className="level">
                         <span className="level-label">Level</span>
-                        <span className={`level-diff ${level}`}></span>
-                        <span className="level word">{levelWord}</span>
+                        <span className={`level-diff ${levelClass}`}></span>
+                        <span className="level word">{level}</span>
                     </div>
                     <div className="date-added">
                         <span className="icon">
@@ -46,23 +44,23 @@ const QuestionListItem = ({ id, title, level, addedAt, answeredBy, successRate, 
                 <div className="actions">
                     {
                         createdBy === currentUser.username ?
-                        (
-                            <div className="button-action">
-                            <Link className="button-action" to="/login">
-                                <span className="icon">
-                                    <i className="fa-solid fa-pencil"></i>
-                                </span>
-                            </Link>
-                            <Link className="button-action" to="/register">
-                                <span className="icon">
-                                    <i className="fa-solid fa-trash"></i>
-                                </span>
-                            </Link>
-                        </div>
-                        ) :
-                        (
-                            <button className="button" type="button">Solve</button>
-                        )
+                            (
+                                <div className="button-action">
+                                    <Link className="button-action" to="/login">
+                                        <span className="icon">
+                                            <i className="fa-solid fa-pencil"></i>
+                                        </span>
+                                    </Link>
+                                    <Link className="button-action" to={`/question/delete/${id}`}>
+                                        <span className="icon">
+                                            <i className="fa-solid fa-trash"></i>
+                                        </span>
+                                    </Link>
+                                </div>
+                            ) :
+                            (
+                                <button className="button" type="button">Solve</button>
+                            )
                     }
                 </div>
             ) : null}

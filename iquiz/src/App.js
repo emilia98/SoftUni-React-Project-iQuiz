@@ -13,6 +13,7 @@ import { QuestionList } from "./components/Quiz/Questions/QuestionList";
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from "./components/Common/PrivateRoute";
 import Logout from './components/Authentication/Logout/Logout';
+import QuestionDelete from './components/Quiz/Questions/Delete/QuestionDelete';
 
 function App() {
  
@@ -34,6 +35,11 @@ function App() {
         <Route path="/logout" element={(
           <PrivateRoute>
             <Logout />
+          </PrivateRoute>
+        )} />
+        <Route path="/question/delete/:id" element={(
+          <PrivateRoute>
+            <QuestionDelete /> 
           </PrivateRoute>
         )} />
       </Routes>
