@@ -1,6 +1,11 @@
+import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 import Register from "./components/Authentication/Register";
 import Home from "./components/Home";
-import { Routes, Route } from 'react-router-dom';
+
 import Login from "./components/Authentication/Login/Login";
 import Header from "./components/Header";
 import CreateQuestion from "./components/Quiz/Questions/Create";
@@ -12,6 +17,7 @@ function App() {
  
   return (
     <AuthProvider>
+      <ToastContainer />
     <div>
       <Header />
       <Routes>
