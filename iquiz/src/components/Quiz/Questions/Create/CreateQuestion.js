@@ -1,11 +1,16 @@
 import './CreateQuestion.css';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+
+import * as questionService from '../../../../services/questionService';
+
 import TextField from '../../../Common/TextField';
 import { QuestionValidator } from '../../../../helpers/validators';
 import Checkbox from '../../../Common/Checkbox';
+import { useNavigate } from 'react-router-dom';
 
 const CreateQuestion = () => {
+    const navigate = useNavigate();
     const [values, setValues] = useState({
         answers: [],
         rowIndex: 0
@@ -76,7 +81,26 @@ const CreateQuestion = () => {
             answers: extractAnswers(allAnswersGenerated)
         };
 
-        let allEntries = Object.fromEntries(new FormData(e.target));
+        questionService.create(data)
+        .then(response => {
+            if (response.successMsg) {
+                toast.success(response.successMsg);
+                navigate('/questionlist');
+                return;
+            }
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error);
+            if (error.errorMsg) {
+                toast.error(error.errorMsg);
+                return
+            }
+        });
+
+        
+
+        //let allEntries = Object.fromEntries(new FormData(e.target));
         
     }
 
